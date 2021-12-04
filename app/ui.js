@@ -1,65 +1,71 @@
-/* eslint-disable no-tabs */
+'use strict'
+
+const store = require('./store')
+
 const signUpSuccess = function (responseData) {
-  $('#signUp-display').text('Signed up successfully!')
-  $('#signUp-display').removeClass()
-  $('#signUp-display').addClass('text-success')
-  $('#after-sign-in').show()
-  $('#before-sign-in').show()
-  $('form').trigger('reset')
-
-  console.log('responseData is ', responseData)
-}
-
-const signUpFailure = function (error) {
-  $('#signUpFailure').text('Sign up failed')
-  $('#signUpFailure').removeClass()
-  $('#signUpFailure').addClass('text-danger')
-  $('#after-sign-in').hide()
-  $('#before-sign-in').show()
-  $('#signOut').hide()
-  console.error(error)
-}
-
-const signInSuccess = function (responseData) {
-  store.user = responseData.user
-  console.log('store is', store)
-  $('#signIn-display').text('Signed in successfully!')
-  $('#signIn-display').removeClass()
-  $('#signIn-display').addClass('text-success')
+  $('#log-in-display').text('Signed up!')
+  $('#before-sign-in').removeClass()
+  $('#before-sign-in').addClass('text-success')
   $('form').trigger('reset')
   $('#before-sign-in').hide()
   $('#after-sign-in').show()
   console.log('responseData is', responseData)
 }
 
-const signInFailure = function (error) {
-  $('#error-message').text('Sign In failed')
-  console.error('the error is' + error)
+const signUpFailure = function (error) {
+  // tell the user it was failure
+  $('#error-message').text('Sign up failed')
+
+  // remove existing classes, then add a red text-danger class from bootstrap
   $('#error-message').removeClass()
   $('#error-message').addClass('text-danger')
-  console.error(error)
-  $('#before-sign-in').show()
   $('#after-sign-in').hide()
-  $('#signOut').hide()
+  $('#before-sign-in').show()
+  // print the error
+  console.error('error is', error)
+}
+
+const signInSuccess = function (responseData) {
+  store.user = responseData.user
+  console.log('store is', store)
+  $('#log-in-display').text('Signed in successfully!')
+  $('#log-in-display').removeClass()
+  $('#log-in-display').addClass('text-success')
+  // clear forms
+  $('form').trigger('reset')
+  $('#before-sign-in').hide()
+	$('#after-sign-in').show()
+}
+
+// eslint-disable-next-line node/handle-callback-err
+const signInFailure = function (error) {
+  $('error-message').text('Sign in failed')
+  $('error-message').removeClass()
+  $('error-message').addClass('text-danger')
+  $('#after-sign-in').hide()
+  $('#before-sign-in').show()
+  console.error('error is', error)
 }
 
 const signOutSuccess = function (responseData) {
-  $('#signOut-display').text('Signed out successfully!')
-  $('#signOut-display').removeClass()
-  $('#signOut-display').addClass('text-success')
+  $('#log-in-display').text('Signed out')
+  $('#log-in-display').removeClass()
+  $('#log-in-display').addClass('text-success')
   $('form').trigger('reset')
+
+  // sign out
   $('#after-sign-in').hide()
   $('#before-sign-in').show()
   console.log('responseData is', responseData)
 }
 
 const signOutFailure = function (error) {
-  $('#error-message').text('Signing out failed!')
+  $('#error-message').text('Sign Out Failure')
   $('#error-message').removeClass()
   $('#error-message').addClass('text-danger')
-  $('#before-sign-in').show()
   $('#after-sign-in').hide()
-  console.log(error)
+  $('#before-sign-in').show()
+  console.error('error is', error)
 }
 
 module.exports = {
@@ -68,5 +74,5 @@ module.exports = {
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure,
+  signOutFailure
 }

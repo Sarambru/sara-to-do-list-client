@@ -1,118 +1,116 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>TO DO LIST</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&family=Yellowtail&display=swap');
-</style>
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+<head>
+  <title>TO DO LIST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&family=Yellowtail&display=swap');
+  </style>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      
-    </head>
- <body>
-   
-  <div class="form">
-  
-    <ul class="tab-group">
-      <li class="tab active"><a href="#signup">Sign Up</a></li>
-      <li class="tab"><a href="#login">Log In</a></li>
-    </ul>
-  
-    <div class="tab-content">
-      <div id="sign-up-form">
-        <h1>Sign Up for Free</h1>
-  
-        <form action="/" method="post">
-  
-          <div class="top-row">
-            <div class="field-wrap">
-              <label>
-                First Name<span class="req"></span>
-              </label>
-              <input type="text" required autocomplete="off" />
-            </div>
-  
-            <div class="field-wrap">
-              <label>
-                Last Name<span class="req"></span>
-              </label>
-              <input type="text" required autocomplete="off" />
-            </div>
-          </div>
-  
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+
+</head>
+
+<body>
+
+<section id="before-sign-in">
+  <!--overallform-->
+<div class="form-container">
+
+  <ul class="tab-group">
+    <li class="tab active"><a href="#signup">Sign Up</a></li>
+    <li class="tab"><a href="#login">Log In</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="signup">
+      <h1>Sign Up for Free</h1>
+
+      <form id= "sign-up-form" class="signup">
+
+        <div class="top-row">
           <div class="field-wrap">
-            <label>
-              Email Address<span class="req"></span>
-            </label>
-            <input type="email" required autocomplete="off" />
-          </div>
-  
-          <div class="field-wrap">
-            <label>
-              Password<span class="req"></span>
-            </label>
-            <input type="password" required autocomplete="off" />
-          </div>
-  
-          <button type="submit" class="sign-up-button">Create Account</button>
-  
-        </form>
-  
+          <label>
+            Email Address<span class="req">*</span>
+          </label>
+          <input type="email" id="userEmail" name= "credentials[email]" required autocomplete="off" />
+          <label>
+            Set A Password<span class="req">*</span>
+          </label>
+          
+          <input type="password" id="userPassword" name= "credentials[password]" required autocomplete="off" />          
+          <input type="password" id="password-confirm" name ="credentials[password_confirmation]" required autocomplete="off" />
+        <button type="submit" class="button button-block">Get Started</button>
       </div>
-  
-      <div id="log-in-form">
-        <h1>Welcome Back!</h1>
-  
-        <form action="/" method="post">
-  
-          <div class="field-wrap">
-            <label>
-              Email Address<span class="req"></span>
-            </label>
-            <input type="email" required autocomplete="off" />
-          </div>
-  
-          <div class="field-wrap">
-            <label>
-              Password<span class="req"></span>
-            </label>
-            <input type="password" required autocomplete="off" />
-          </div>
-  
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
-  
-          <button class="log-in-button">Log In</button>
-  
-        </form>
-  
-      </div>
-  
-    </div><!-- tab-content -->
-  
-  </div> <!-- /form -->
-      <h2 >TO-DO</h2>
-  
-      <div class="todo-content">
+    </div>
+    </form>
+    </div>
 
-<div class="todo-input">
-<input type="text" placeholder="Enter task here..">
-<button class="add-todo">+</button>
+
+
+    <div id="login">
+      <h1>Welcome Back!</h1>
+
+      <form id="log-in-form" action="/" method="post">
+
+        <div class="field-wrap">
+          <label>
+            Email Address<span class="req">*</span>
+          </label>
+          <input type="email" name="credentials[name]" autocomplete="off" />
+        </div>
+
+        <div class="field-wrap">
+          <label>
+            Password<span class="req">*</span>
+          </label>
+          <input type="password" name="credentials[password]" required autocomplete="off" />
+        </div>
+
+        <p class="forgot"><a href="#">Reset Password</a></p>
+
+        <button type="submit" id="sign-up" class="button button-block">Log In</button>
+
+      </form>
+
+    </div>
+
+  </div><!-- tab-content -->
+
+</div> <!-- /form -->
+
+</section> 
+
+<section>
+  <div id="error-message"></div>
+  <div id="log-in-display"></div>
+</section>
+
+<section id="after-sign-in">
+
+  <div>
+          <button type="submit" id="sign-out">Sign Out</button>
+
 </div>
-<div class="error"></div>
-<div class="todo-list">
-</div>
-</div>
-<!--===first todo list ====-->
+  <h2>TO-DO</h2>
 
-
-
-
+  <div class="todo-content">
+  <div class="todo-input">
+    <input type="text" placeholder="Enter task here..">
+    <button class="add-todo">+</button>
+    </div>
+    <div class="error"></div>
+    <div class="todo-list">
+    </div>
+  </div>
+  <!--===first todo list ====-->
+</section>
 
 </body>
 </html>

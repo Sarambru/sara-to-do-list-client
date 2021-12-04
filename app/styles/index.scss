@@ -1,3 +1,5 @@
+@import '~bootstrap/scss/bootstrap';
+
 // sign up and log in form css//
 
 *, *:before, *:after {
@@ -184,7 +186,7 @@ textarea {
 
 // to do list CSS
 
-body {
+#todo-form {
     justify-content: space-around;
 }
 div.todo-content{
@@ -314,4 +316,13 @@ display: none;
 h2 {
     font-size: 50px;
     font-family: 'Arial';
+}
+
+.hide {
+  display: none;
+}
+
+
+#after-sign-in {
+display: none;
 }
