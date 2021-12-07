@@ -1,71 +1,113 @@
-'use strict'
-
 const store = require('./store')
 
 const signUpSuccess = function (responseData) {
-  $('#log-in-display').text('Signed up!')
-  $('#before-sign-in').removeClass()
-  $('#before-sign-in').addClass('text-success')
+  $('#user-display').removeClass()
+  $('#user-display').addClass('text-success')
+  $('#user-display').text('Signed up successfully!')
+  setTimeout(() => {
+    $('#user-display').empty()
+  }, 5000)
+  //   // remove existing classes and then add a green text-success class from boostrap
+  //   // we need to remove classes so it doesnt interfere with our bootstrap if a class has been determined before
+
+  //   // clear our the form field
   $('form').trigger('reset')
-  $('#before-sign-in').hide()
-  $('#after-sign-in').show()
   console.log('responseData is', responseData)
 }
 
 const signUpFailure = function (error) {
-  // tell the user it was failure
-  $('#error-message').text('Sign up failed')
+  $('#user-display').text("The passwords you entered don't match. Please try again")
+  $('#user-display').removeClass()
+  $('#user-display').addClass('text-danger')
+  setTimeout(() => {
+    $('#user-display').empty()
+  }, 5000)
+  // clear our the form field
+  $('form').trigger('reset')
 
-  // remove existing classes, then add a red text-danger class from bootstrap
-  $('#error-message').removeClass()
-  $('#error-message').addClass('text-danger')
-  $('#after-sign-in').hide()
-  $('#before-sign-in').show()
-  // print the error
-  console.error('error is', error)
+  console.log('error is', error)
 }
 
 const signInSuccess = function (responseData) {
+  $('#login-section').hide()
+
+  console.log('sign in store is', store)
   store.user = responseData.user
-  console.log('store is', store)
-  $('#log-in-display').text('Signed in successfully!')
-  $('#log-in-display').removeClass()
-  $('#log-in-display').addClass('text-success')
-  // clear forms
   $('form').trigger('reset')
-  $('#before-sign-in').hide()
-	$('#after-sign-in').show()
-}
 
-// eslint-disable-next-line node/handle-callback-err
+  $('#user-display').html('')
+  $('#user-display').removeClass()
+  $('#user-display').addClass('text-success')
+  $('#user-display').text('Signed in successfully!')
+
+  setTimeout(() => {
+    $('#user-display').empty()
+  }, 5000)
+  $('.after-sign-in').show()
+  $('#top-bar').show()
+  $('.after-sign-in button').addClass('btn btn-primary btn-sm')
+
+  console.log('sign in responseData is', responseData)
+}
 const signInFailure = function (error) {
-  $('error-message').text('Sign in failed')
-  $('error-message').removeClass()
-  $('error-message').addClass('text-danger')
-  $('#after-sign-in').hide()
-  $('#before-sign-in').show()
-  console.error('error is', error)
+  $('#user-display').text('The credentials you entered are incorrect. Check your email and password and try again')
+
+  $('#user-display').removeClass()
+  $('#user-display').addClass('text-danger')
+  setTimeout(() => {
+    $('#user-display').empty()
+  }, 2000)
+  // clear our the form field
+  $('form').trigger('reset')
+  console.log('sign in error is', error)
 }
 
-const signOutSuccess = function (responseData) {
-  $('#log-in-display').text('Signed out')
-  $('#log-in-display').removeClass()
-  $('#log-in-display').addClass('text-success')
-  $('form').trigger('reset')
+const changePasswordSuccess = function (responseData) {
+  $('#user-display').text('Changed password successfully')
+  setTimeout(() => {
+    $('#user-display').empty()
+  }, 2000)
+  $('#user-display').removeClass()
+  $('#user-display').addClass('text-success')
 
-  // sign out
-  $('#after-sign-in').hide()
-  $('#before-sign-in').show()
-  console.log('responseData is', responseData)
+  $('form').trigger('reset')
+  console.log('change password responseData is', responseData)
+}
+
+const changePasswordFailure = function (error) {
+//   $('#user-display').text('CHanging passwords failed!')
+
+  //   $('#user-display').removeClass()
+  //   $('#user-display').addClass('text-danger')
+
+  //   $('form').trigger('reset')
+  console.log('change pwd error is', error)
+}
+
+const signOutSuccess = function () {
+  $('#user-display').text('Signed out successfully')
+  $('#user-display').removeClass()
+  $('#user-display').addClass('text-success')
+  setTimeout(() => {
+    $('#user-display').empty()
+  }, 5000)
+  $('form').trigger('reset')
+  store.user = null
+  $('form').trigger('reset')
+  $('.after-sign-in').hide()
+  $('#login-section').show()
+
+  console.log('signOutSuccess ran and nothing was returned!')
 }
 
 const signOutFailure = function (error) {
-  $('#error-message').text('Sign Out Failure')
-  $('#error-message').removeClass()
-  $('#error-message').addClass('text-danger')
-  $('#after-sign-in').hide()
-  $('#before-sign-in').show()
-  console.error('error is', error)
+  $('#user-display').text('Signing out failed. Please try again')
+
+  $('#user-display').removeClass()
+  $('#user-display').addClass('text-danger')
+
+  $('form').trigger('reset')
+  console.log('error is', error)
 }
 
 module.exports = {
@@ -73,6 +115,8 @@ module.exports = {
   signUpFailure,
   signInSuccess,
   signInFailure,
+  changePasswordSuccess,
+  changePasswordFailure,
   signOutSuccess,
   signOutFailure
 }

@@ -6,14 +6,14 @@
 // require('./example')
 
 //
-const authEvents = require('./events')
+const authEvents = require('./tasks/events')
 $(() => {
   // your JS code goes here
 
   // test/
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#log-in-form').on('submit', authEvents.onSignIn)
-   $('#sign-out').on('submit', authEvents.onSignOut)
+  $('#sign-out').on('submit', authEvents.onSignOut)
 })
 
 // log in and sign up form JS
@@ -88,7 +88,7 @@ $(document).on('click', '.add-todo', function () {
   }
   $(this).siblings('input').val('')
 })
-// add todo list on pressing Enter key
+// add todo list on pressing Enter 
 $(document).keydown(function (event) {
   if (event.which == 13) {
     event.preventDefault()
@@ -154,8 +154,4 @@ $(document).on('click', '.update-todo', function () {
 // line through the  todo list script
 $(document).on('click', '.list-data', function () {
   $(this).toggleClass('line-through')
-})
-
-$(() => {
-  // your JS code goes here
 })
