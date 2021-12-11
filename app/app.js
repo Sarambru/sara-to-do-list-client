@@ -1,12 +1,8 @@
 /* eslint-disable no-tabs */
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
+const authEvents = require('../auth/events')
 
-// use require without a reference to ensure a file is bundled
-// require('./example')
-
-//
-const authEvents = require('./tasks/events')
 $(() => {
   // your JS code goes here
 
@@ -88,7 +84,7 @@ $(document).on('click', '.add-todo', function () {
   }
   $(this).siblings('input').val('')
 })
-// add todo list on pressing Enter 
+// add todo list on pressing Enter key
 $(document).keydown(function (event) {
   if (event.which == 13) {
     event.preventDefault()
@@ -154,4 +150,8 @@ $(document).on('click', '.update-todo', function () {
 // line through the  todo list script
 $(document).on('click', '.list-data', function () {
   $(this).toggleClass('line-through')
+})
+
+$(() => {
+  // your JS code goes here
 })

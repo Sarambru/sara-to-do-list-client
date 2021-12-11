@@ -37,16 +37,17 @@
             <div class="top-row">
               <div class="field-wrap">
                 <label>
-               <span class="req"></span>
+                  <span class="req"></span>
                 </label>
-                <input type="email" id="userEmail" name="credentials[email]" required placeholder="Email Address" />
+                <input type="email" name="credentials[email]" required placeholder="Email Address" />
 
                 <label>
                   <span class="req"></span>
                 </label>
 
-                <input type="password" id="userPassword" name="credentials[password]" placeholder="Password" />
-                <input type="password" id="password-confirm" name="credentials[password_confirmation]" placeholder="Confirm Password" />
+                <input type="password" name="credentials[password]" placeholder="Password" />
+                <input type="password" name="credentials[password_confirmation]"
+                  placeholder="Confirm Password" />
                 <button type="submit" class="button button-block">Get Started</button>
               </div>
             </div>
@@ -64,12 +65,12 @@
               <label for="email">
                 <span class="req"></span>
               </label>
-              <input type="email" name="credentials[email]" />
+              <input type="email" name="credentials[email]" placeholder="Email Address" />
             </div>
 
             <div class="field-wrap">
               <label>
-              <span class="req"></span>
+                <span class="req"></span>
               </label>
               <input type="password" name="credentials[password]" placeholder="password" />
             </div>
@@ -88,17 +89,18 @@
 
   </section>
 
+  <!--- messaging-->
   <section>
     <div id="error-message"></div>
-    <div id="log-in-display"></div>
+    <div id="user-display"></div>
   </section>
 
   <section id="after-sign-in">
 
     <div>
       <button type="submit" id="sign-out">Sign Out</button>
-
     </div>
+
     <h2>TO-DO</h2>
 
     <div class="todo-content">

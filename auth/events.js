@@ -1,21 +1,31 @@
+'use strict'
+
 const getFormFields = require('../lib/get-form-fields')
 
-const api = require('../app/api')
+const api = require('./api')
 
-const ui = require('../app/ui')
+const ui = require('../auth/ui')
 
 const onSignUp = function (event) {
   event.preventDefault()
+  console.log('sign in ran!')
+
   const form = event.target
   const formData = getFormFields(form)
-  api.signUp(formData).then(ui.signUpSuccess).catch(ui.signUpFailure)
+  api.signUp(formData)
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
 }
 
 const onSignIn = function (event) {
   event.preventDefault()
+  console.log('sign in ran!')
+
   const form = event.target
   const formData = getFormFields(form)
-  api.signIn(formData).then(ui.signInSuccess).catch(ui.signInFailure)
+  api.signIn(formData)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
 }
 
 const onChangePassword = function (event) {
