@@ -23,23 +23,26 @@ webpackConfig.mode = 'development'
 // make `jQuery` and `$` available in the development console
 webpackConfig.module.rules.push({
   test: require.resolve('jquery'),
-  use: [{
-    loader: 'expose-loader',
-    options: {
-      exposes: {
-        globalName: 'jQuery',
-        override: true
+  use: [
+    {
+      loader: 'expose-loader',
+      options: {
+        exposes: {
+          globalName: 'jQuery',
+          override: true
+        }
+      }
+    },
+    {
+      loader: 'expose-loader',
+      options: {
+        exposes: {
+          globalName: '$',
+          override: true
+        }
       }
     }
-  }, {
-    loader: 'expose-loader',
-    options: {
-      exposes: {
-        globalName: '$',
-        override: true
-      }
-    }
-  }]
+  ]
 })
 
 module.exports = {
@@ -48,7 +51,7 @@ module.exports = {
     inline: true, // reload on change
     webpack: webpackConfig,
     publicPath: '/public/',
-    contentBase: [ path.join(__dirname, '/../') ],
+    contentBase: [path.join(__dirname, '/../')],
     watchContentBase: true
   },
 
