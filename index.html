@@ -74,9 +74,6 @@
               </label>
               <input type="password" name="credentials[password]" placeholder="password" />
             </div>
-
-            <p class="forgot"><a href="#">Reset Password</a></p>
-
             <button type="submit" id="sign-up" class="button button-block">Log In</button>
 
           </form>
@@ -98,8 +95,21 @@
   <section id="after-sign-in">
 
     <div>
-      <button type="submit" id="sign-out">Sign Out</button>
+      <form id="sign-out">
+      <button type="submit" class="btn btn-danger">Sign Out</button>
+      </form>
     </div>
+
+        <form id="change-password">
+          <fieldset>
+            <legend>My Account</legend>
+            <div id="password-reset-form">
+            <input type="password" name="passwords[old]" placeholder="Old Password" required>
+            <input type="password" name="passwords[new]" placeholder="New Password" required>
+            <button class="btn btn-primary">Change password</button>
+            </div>
+          </fieldset>
+        </form>
 
     <h2>TO-DO</h2>
 

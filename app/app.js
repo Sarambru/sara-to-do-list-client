@@ -10,6 +10,7 @@ $(() => {
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#log-in-form').on('submit', authEvents.onSignIn)
   $('#sign-out').on('submit', authEvents.onSignOut)
+  $('#change-password').on('submit', authEvents.onChangePassword)
 })
 
 // log in and sign up form JS

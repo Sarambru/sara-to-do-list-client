@@ -14,8 +14,8 @@ const signUpSuccess = function (responseData) {
 
   console.log('signUpSuccess ran. responseData is ', responseData)
 
-  $('#after-sign-in').show()
-  $('#before-sign-in').show()
+  $('#before-sign-in').hide()
+	$('#after-sign-in').show()
 }
 
 const signUpFailure = function (error) {
@@ -56,7 +56,6 @@ const signOutSuccess = function () {
   // hide the after sign in elements
   $('#after-sign-in').hide()
   $('#before-sign-in').show()
-  console.log('signOutSuccess ran')
 }
 
 const signOutFailure = function (error) {
@@ -64,28 +63,22 @@ const signOutFailure = function (error) {
   $('#error-message').removeClass()
   $('#error-message').addClass('text-danger')
   $('form').trigger('reset')
-  console.log(error)
 }
 
 const changePasswordSuccess = function () {
   $('#user-display').text('Changed password successfully')
-
+  $('#password-reset').show()
   $('#user-display').removeClass()
   $('#user-display').addClass('text-success')
-
   // clear (reset) the forms on the page
   $('form').trigger('reset')
-
-  console.log('changePasswordSuccess ran!')
 }
 
 const changePasswordFailure = function (error) {
   $('#error-message').text('Error on change password')
-
   $('#error-message').removeClass()
   $('#error-message').addClass('text-danger')
 
-  console.error('changePasswordFailure ran. Error is :', error)
 }
 
 module.exports = {
