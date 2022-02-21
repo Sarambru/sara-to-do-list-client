@@ -48,7 +48,7 @@ $('.tab a').on('click', function (e) {
   $(this).parent().addClass('active')
   $(this).parent().siblings().removeClass('active')
 
-  let target = $(this).attr('href')
+  const target = $(this).attr('href')
 
   $('.tab-content > div').not(target).hide()
 
@@ -111,11 +111,7 @@ $(document).on('click', '.edit-todo', function () {
       .parent('.list-row')
       .find('.update-data')
       .html(
-        '<textarea style="height:' +
-					listDataHeight +
-					'px">' +
-					listText +
-					'</textarea>'
+        ''
       )
   } else {
     $(this)
@@ -153,6 +149,5 @@ $(document).on('click', '.list-data', function () {
   $(this).toggleClass('line-through')
 })
 
-$(() => {
-  // your JS code goes here
-})
+// $(() => {
+// })
